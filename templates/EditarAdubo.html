@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AgroLife</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='/img/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="{{ url_for('static', filename='/img/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="{{ url_for('static', filename='/img/apple-touch-icon-114x114.png') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='fonts/font-awesome/css/font-awesome.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/owl.theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='css/nivo-lightbox/nivo-lightbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/nivo-lightbox/default.css') }}">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="/"><img class="logo-topo" id="img-topo"
+                             src="{{ url_for('static', filename='img/logoAgrolife.png') }}"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/racoes" class="page-scroll">Rações</a></li>
+                <li><a href="/adubos" class="page-scroll">Adubos</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<header id="header">
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 intro-text">
+                        <h1>Editar Adubo</h1>
+                        <p>Atualize as informações do adubo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- FORM EDITAR -->
+<form action="/atualizar_adubo/{{ adubo[0] }}" method="post">
+    <div class="form-group">
+        <h2 class="heading">Editar Dados do Produto</h2>
+
+        <div class="controls">
+            <input type="text" id="nutrientes" class="floatLabel" name="nutrientes" value="{{ adubo[1] }}">
+            <label for="nutrientes">Nutrientes</label>
+        </div>
+
+        <div class="controls">
+            <input type="text" id="descricao" class="floatLabel" name="descricao" value="{{ adubo[2] }}">
+            <label for="descricao">Descrição</label>
+        </div>
+
+        <div class="controls">
+            <input type="text" id="estado" class="floatLabel" name="estado" value="{{ adubo[3] }}">
+            <label for="estado">Estado Físico</label>
+        </div>
+
+        <div class="controls">
+            <input type="text" id="fornecedor" class="floatLabel" name="fornecedor" value="{{ adubo[4] }}">
+            <label for="fornecedor">Fornecedor</label>
+        </div>
+
+        <div class="controls">
+            <input type="number" id="quantidade" class="floatLabel" name="quantidade" value="{{ adubo[5] }}">
+            <label for="quantidade">Quantidade</label>
+        </div>
+
+        <div class="controls">
+            <input type="number" id="peso" class="floatLabel" name="peso" value="{{ adubo[6] }}">
+            <label for="peso">Peso (Kg/L)</label>
+        </div>
+
+        <div class="controls">
+            <input type="number" id="preco" class="floatLabel" name="preco" value="{{ adubo[7] }}">
+            <label for="preco">Preço</label>
+        </div>
+
+    </div>
+
+    <div class="div-novo">
+        <div class="botao">
+            <a href="/adubos" class="btn btn-custom btn-lg page-scroll">VOLTAR</a>
+        </div>
+
+        <div class="botao">
+            <button type="submit" class="btn btn-custom btn-lg">SALVAR</button>
+        </div>
+    </div>
+
+</form>
+
+<script type="text/javascript" src="{{ url_for('static', filename='/js/jquery.1.11.1.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/SmoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/nivo-lightbox.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/jquery.isotope.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/owl.carousel.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='/js/jqBootstrapValidation.js') }}"></script>
+
+</body>
+</html>

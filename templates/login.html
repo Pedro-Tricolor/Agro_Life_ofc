@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <title>AgroLife</title>
+</head>
+<body>
+
+<div class="container right-panel-active">
+
+    <!-- Entrar -->
+    <div class="container__form container--signin">
+        <form action="/autenticar" method="POST" class="form" id="form2">
+            <h2 class="form__title">Entrar</h2>
+
+            <input type="text" name="usuario" placeholder="Login" class="input-forms" required>
+            <input type="password" name="senha" placeholder="Senha" class="input-forms" required>
+
+            <button type="submit" class="btn">Entrar</button>
+
+            <!-- MENSAGEM DE ERRO -->
+            {% if erro %}
+                <p style="color: red; margin-top: 10px; font-size: 14px; text-align:center;">
+                    {{ erro }}
+                </p>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- Overlay -->
+    <div class="container__overlay">
+        <div class="overlay">
+            <div class="overlay__panel overlay--left">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgroLife</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicons
+        ================================================== -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href={{ url_for('static', filename="/img/apple-touch-icon.png") }}>
+    <link rel="apple-touch-icon" sizes="72x72" href={{ url_for('static', filename="/img/apple-touch-icon-72x72.png") }}>
+    <link rel="apple-touch-icon" sizes="114x114"
+          href={{ url_for('static', filename="/img/apple-touch-icon-114x114.png") }}>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="css/bootstrap.css") }}>
+    <link rel="stylesheet" type="text/css"
+          href={{ url_for('static', filename="fonts/font-awesome/css/font-awesome.css") }}>
+
+    <!-- Slider
+        ================================================== -->
+    <link rel="stylesheet" media="screen" href={{ url_for('static', filename="css/owl.carousel.css") }}>
+    <link rel="stylesheet" media="screen" href={{ url_for('static', filename="css/owl.theme.css") }}>
+
+    <!-- Stylesheet
+        ================================================== -->
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="css/style.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="css/nivo-lightbox/nivo-lightbox.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="css/nivo-lightbox/default.css") }}>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <a href="/"><img class="logo-topo" id="img-topo"
+                             src={{ url_for('static', filename="img/logoAgrolife.png") }}> </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/racoes" class="page-scroll">Rações</a></li>
+                <li><a href="/adubos" class="page-scroll">Adubos</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- Header -->
+<header id="header">
+    <div class="intro">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 intro-text">
+                        <h1>Adubos & Fertilizantes</h1>
+                        <p>Tabela de Adubos</p>
+                        <a href="#tabela-adubo" class="btn btn-custom btn-lg page-scroll">IR</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- About Section -->
+<section id="tabela-adubo" class="tabela">
+    <div class="container">
+        <table class="responsive-table">
+            <caption>AgroLife - Adubos</caption>
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nutrientes</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Caracteristica Física</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Em Estoque</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Preço</th>
+            </tr>
+            </thead>
+            <tfoot>
+
+            </tfoot>
+            <tbody>
+            {% for a in adubos %}
+                <tr>
+                    <th scope="row">{{ a[0] }}</th>
+                    <td data-title="Nutrientes">{{ a[1] }}</td>
+                    <td data-title="Descrição" data-type="currency">{{ a[2] }}</td>
+                    <td data-title="Estado" data-type="currency">{{ a[3] }}</td>
+                    <td data-title="Fornecedor" data-type="currency">{{ a[4] }}</td>
+                    <td data-title="Em Estoque" data-type="currency">{{ a[5] }}</td>
+                    <td data-title="Peso" data-type="currency">{{ a[6] }}Kg/L</td>
+                    <td data-title="Preço" data-type="currency">R${{ a[7] }}</td>
+                    <td data-title="Excluir" data-type="currency">
+                        <form action="/excluir_adubo/{{ a[0] }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-lg page-scroll">
+                                Excluir
+                            </button>
+                        </form>
+                    </td>
+                    <td data-title="Em Estoque" data-type="currency"><a href="/editar_adubo/{{ a[0] }}"
+                                                                        class="btn btn-warning btn-lg page-scroll"
+                                                                        style="margin-right: 10px;">
+                                                                        Editar
+                    </a>
+                    </td>
+
+
+                </tr>
+                </tbody>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</section>
+<div class="div-novo">
+    <a href="/adicionar_adubo" class="btn btn-efetuar btn-lg page-scroll">Adicionar Adubo</a></div>
+</div>
+
+<script type="text/javascript" src={{ url_for('static', filename="/js/jquery.1.11.1.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/bootstrap.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/SmoothScroll.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/nivo-lightbox.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/jquery.isotope.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/owl.carousel.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/jqBootstrapValidation.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/contact_me.js") }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="/js/main.js") }}></script>
+
+</body>
+</html>
+
